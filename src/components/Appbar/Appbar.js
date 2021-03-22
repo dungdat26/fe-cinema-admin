@@ -3,12 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Drawer from "@material-ui/core/Drawer";
-
+import Login_Button from "../Login/Login_Button";
 import Menu from "../Menu/Menu";
+import MenuLogin from "../MenuLogin/MenuLogin";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Appbar() {
+export default function Appbar(props) {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -47,7 +48,15 @@ export default function Appbar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <div className="m-auto">
+            <div className="d-flex">
+              {props.user ? (
+                <MenuLogin user={props.user} logout={props.logout} />
+              ) : (
+                <Login_Button loginSuccess={props.loginSuccess} />
+              )}
+            </div>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

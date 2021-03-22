@@ -8,6 +8,7 @@ import {
   MenuItem,
   Select,
   Input,
+  Modal 
 } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
@@ -143,6 +144,7 @@ class EditFilm extends Component {
   deleteFilmHandler = () => {
     this.setState({ isDone: true });
   };
+  
 
   render() {
     if (this.state.isDone) {
@@ -361,6 +363,7 @@ class EditFilm extends Component {
               value={this.state.content}
               onChange={this.changeInputHandler}
             />
+              
           </Col>
         </Row>
         <div className="add-film-button">

@@ -44,7 +44,7 @@ export default function NestedList() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-          Menu Admin
+         <h3>Menu Admin</h3> 
         </ListSubheader>
       }
       className={classes.root}
@@ -101,14 +101,7 @@ export default function NestedList() {
       </ListItem>
       <Collapse in={openAcc} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <Link to="/add-producer">
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Thêm nhà sản xuất" />
-            </ListItem>
-          </Link>
+          
           
           <Link to="/all-producer">
             <ListItem button className={classes.nested}>

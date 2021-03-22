@@ -50,7 +50,6 @@ class AddFilm extends Component {
     discount: "",
     urlFilm: "",
     producers: [],
-    types: [],
     director: "",
     producerName: [],
     directorName: [],
@@ -135,21 +134,21 @@ class AddFilm extends Component {
     // get the_loai từ db và map theo tên để  select tên hiện thị trong input
     //renderType dùng để hiện thị type_name các the_loai trong input selection
     axios
-    .get("/get-the_loai")
-    .then((res) => {
-      // console.log(res.data);
-      const types = [...res.data.types];
-      // console.log(types);
-      this.setState({ types: types });
-      const renderType = types.map((type) => {
-        return type.type_name;
+      .get("/get-the_loai")
+      .then((res) => {
+        // console.log(res.data);
+        const types = [...res.data.types];
+        // console.log(types);
+        this.setState({ types: types });
+        const renderType = types.map((type) => {
+          return type.type_name;
+        });
+        // console.log(renderType);
+        this.setState({ renderType });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      // console.log(renderType);
-      this.setState({ renderType });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 
   changeInputHandler = (event) => {
@@ -233,8 +232,8 @@ class AddFilm extends Component {
       })._id;
     });
 
-    //delete bớt các element trong array vì gửi lên BE chỉ gửi những thứ cần thiết 
-    //không cần thiết gửi tất cả thông tin không xài đến 
+    //delete bớt các element trong array vì gửi lên BE chỉ gửi những thứ cần thiết
+    //không cần thiết gửi tất cả thông tin không xài đến
     delete filmData.typeName;
     delete filmData.producerName;
     delete filmData.personName;
@@ -258,12 +257,12 @@ class AddFilm extends Component {
       });
   };
 
-  //nhưng vì đây là component CHÁU 
+  //nhưng vì đây là component CHÁU
   //nên phải truyền từ conmponent ông NỘI là TabsAdd.js chứa 3 modal add
   //sau đó tiếp tục truyền tới mỗi form add là Component CHA tiếp đến Component Cháu
   //mới GET được ĐATA từ DB mà 3 form component CHA gửi lên db
   //xử lý modal add actors vào tại trang add film mà không cần refresh page
-  //tên actors vừa add được sẽ được update liền tại input để chọn 
+  //tên actors vừa add được sẽ được update liền tại input để chọn
   addActorSuccess = (data) => {
     console.log(data);
     // console.log(res.data);
@@ -280,7 +279,7 @@ class AddFilm extends Component {
     this.setState({ renderActor });
   };
 
-   //tên directors vừa add được sẽ được update liền tại input để chọn 
+  //tên directors vừa add được sẽ được update liền tại input để chọn
   addDirectorSuccess = (data) => {
     console.log(data);
 
@@ -298,7 +297,7 @@ class AddFilm extends Component {
     this.setState({ renderDirector });
   };
 
-  //tên producers vừa add được sẽ được update liền tại input để chọn 
+  //tên producers vừa add được sẽ được update liền tại input để chọn
   addProducerSuccess = (data) => {
     console.log(data);
 
@@ -318,7 +317,7 @@ class AddFilm extends Component {
 
   render() {
     if (this.state.isDone) {
-      return <Redirect to="/add-film" />;
+      return <Redirect to="/all-film" />;
     }
     return (
       <Container className="form-add-film">

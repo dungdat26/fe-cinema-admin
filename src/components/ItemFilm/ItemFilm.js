@@ -11,10 +11,14 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    margin: "1rem auto",
+    margin: "2rem auto",
+    marginLeft: 15,
+    width: 360,
+    minHeight: 400,
   },
   media: {
-    height: 140,
+    height: 380,
+    width: 290,
   },
   link: {
     textDecoration: "none",

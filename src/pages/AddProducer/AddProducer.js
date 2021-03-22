@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
@@ -33,7 +32,6 @@ class AddProducer extends Component {
       .post("/add-producer", producerData)
       .then((res) => {
         console.log(res.data);
-        this.setState({ isDone: true });
         // đây là component CHA được truyền props từ component ông NỘI và gửi lên BE để add vào db
         this.props.addProducerSuccess(res.data);
       })
@@ -42,9 +40,7 @@ class AddProducer extends Component {
       });
   };
   render() {
-    if (this.state.isDone) {
-      return <Redirect to="/all-directors" />;
-    }
+   
     return (
       <div>
         <TextField
