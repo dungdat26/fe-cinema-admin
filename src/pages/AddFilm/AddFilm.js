@@ -322,12 +322,16 @@ class AddFilm extends Component {
     return (
       <Container className="form-add-film">
         {/* đây là component CHÁU được truyền xuống từ component CHA và Ông NỘI */}
-        <TabsAdd
+        <Button disabled={!this.props.user}>
+          
+          <TabsAdd
+          
           addActorSuccess={this.addActorSuccess}
           addDirectorSuccess={this.addDirectorSuccess}
           addProducerSuccess={this.addProducerSuccess}
         />
-        <h3 style={{ marginTop: "30px" }}>Thêm Phim</h3>
+       </Button>
+       <h3 style={{ marginTop: "30px" }}>Thêm Phim</h3>
         <Row>
           <Col>
             <TextField
@@ -535,6 +539,7 @@ class AddFilm extends Component {
             variant="contained"
             style={{ background: "yellowgreen" }}
             onClick={this.submitHandler}
+            disabled={!this.props.user}
           >
             Thêm phim
           </Button>

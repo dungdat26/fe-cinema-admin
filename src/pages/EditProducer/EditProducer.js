@@ -93,6 +93,7 @@ class EditProducer extends Component {
             variant="contained"
             color="primary"
             onClick={this.editProducerHandler}
+            disabled={!this.props.user}
           >
             Sửa Nhà Sản Xuất
           </Button>

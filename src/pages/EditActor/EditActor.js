@@ -123,6 +123,7 @@ class EditActor extends Component {
             variant="contained"
             color="primary"
             onClick={this.editActorHandler}
+            disabled={!this.props.user}
           >
             Sửa diễn viên
           </Button>

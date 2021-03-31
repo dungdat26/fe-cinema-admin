@@ -80,20 +80,12 @@ class AddProducer extends Component {
           startIcon={<AddIcon />}
           style={{ background: "yellowgreen", margin: "10px" }}
           onClick={this.submitHandler}
+          // disabled={!this.props.user}
         >
           Thêm Nhà Sản xuất
         </Button>
 
-        <Button 
        
-          variant="contained"
-          color="secondary"
-          onClick = {this.handleClose}
-          startIcon={<CloseIcon />}
-          style={{ margin: "10px" }}
-        >
-          Hủy Thêm
-        </Button>
       </div>
     );
   }

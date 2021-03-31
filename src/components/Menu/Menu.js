@@ -14,8 +14,6 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
 import { Link } from "react-router-dom";
 
-
-
 // import TabsAdd from '../TabsAdd/TabsAdd';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +42,7 @@ export default function NestedList() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-         <h3>Menu Admin</h3> 
+          <h3>Menu Admin</h3>
         </ListSubheader>
       }
       className={classes.root}
@@ -53,7 +51,7 @@ export default function NestedList() {
         <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="Drafts" />
+        <ListItemText primary="Menu Phim" />
         {openFilm ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={openFilm} timeout="auto" unmountOnExit>
@@ -64,6 +62,14 @@ export default function NestedList() {
                 <StarBorder />
               </ListItemIcon>
               <ListItemText primary="Thêm Phim" />
+            </ListItem>
+          </Link>
+          <Link to="/add-news" className={classes.link}>
+            <ListItem button className={classes.nested}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Thêm Tin Tức" />
             </ListItem>
           </Link>
 
@@ -80,7 +86,18 @@ export default function NestedList() {
             </ListItemIcon>
             <ListItemText primary="Phim sắp chiếu" />
           </ListItem>
+        </List>
+      </Collapse>
 
+      <ListItem button onClick={() => setOpenAcc((prev) => !prev)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="List All Product " />
+        {openAcc ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={openAcc} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
           <Link to="/all-film" className={classes.link}>
             <ListItem button className={classes.nested}>
               <ListItemIcon>
@@ -89,20 +106,15 @@ export default function NestedList() {
               <ListItemText primary="Tất cả phim" />
             </ListItem>
           </Link>
-        </List>
-      </Collapse>
+          <Link to="/all-news" className={classes.link}>
+            <ListItem button className={classes.nested}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Tất cả Tin Tức" />
+            </ListItem>
+          </Link>
 
-      <ListItem button onClick={() => setOpenAcc((prev) => !prev)}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Nhà sản xuất" />
-        {openAcc ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={openAcc} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          
-          
           <Link to="/all-producer">
             <ListItem button className={classes.nested}>
               <ListItemIcon>
@@ -113,9 +125,7 @@ export default function NestedList() {
           </Link>
         </List>
 
-        
         <List component="div" disablePadding>
-        
           <Link to="/all-actors">
             <ListItem button className={classes.nested}>
               <ListItemIcon>
@@ -127,7 +137,6 @@ export default function NestedList() {
         </List>
 
         <List component="div" disablePadding>
-        
           <Link to="/all-directors">
             <ListItem button className={classes.nested}>
               <ListItemIcon>
@@ -137,12 +146,7 @@ export default function NestedList() {
             </ListItem>
           </Link>
         </List>
-        
-        
       </Collapse>
-      
     </List>
-
-    
   );
 }

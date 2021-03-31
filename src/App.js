@@ -14,6 +14,10 @@ import AllActor from "./pages/AllActor/AllActor";
 import EditActor from "./pages/EditActor/EditActor";
 import AllDirector from "./pages/AllDirector/AllDirector";
 import EditDirector from "./pages/EditDirector/EditDirector";
+import Login_Register from "./pages/Login_Register/Login_Register";
+import AddNews from "./pages/AddNews/AddNews";
+import AllNews from "./pages/AllNews/AllNews";
+import EditNews from "./pages/EditNews/EditNews"
 
 export default class App extends Component {
   state = {
@@ -30,11 +34,8 @@ export default class App extends Component {
   componentDidMount = () => {
     window.scrollTo(0, 0);
 
-    const cart_str = JSON.parse(localStorage.getItem("gio_hang")) || [];
-    this.setState({ cart: cart_str });
-
     const token = localStorage.getItem("token");
-
+    console.log(token);
     if (token) {
       axios
         .get("/auto-login", {
@@ -42,8 +43,7 @@ export default class App extends Component {
         })
         .then((res) => {
           console.log(res);
-          // console.log(res.data.balance)
-          this.loginSuccess(res.data.name, res.data.balance);
+          this.loginSuccess(res.data.name);
         })
         .catch((err) => {
           console.log(err);
@@ -62,20 +62,45 @@ export default class App extends Component {
         <Container>
           <Switch>
             <Route path="/all-film" component={AllFilm} />
-            <Route path="/add-film" component={AddFilm} />
-            <Route path="/edit-film/:id_phim" component={EditFilm} />
-            <Route path="/add-producer" component={AddProducer} />
+            <Route path="/all-news" component={AllNews} />
+            <Route
+              path="/add-film"
+              render={(props) => <AddFilm {...props} user={this.state.user} />}
+            />
+            <Route
+              path="/edit-film/:id_phim"
+              render={(props) => <EditFilm {...props} user={this.state.user} />}
+            />
             <Route path="/all-producer" component={AllProducer} />
             <Route
               path="/edit-producer/:id_producer"
-              component={EditProducer}
+              render={(props) => (
+                <EditProducer {...props} user={this.state.user} />
+              )}
+            />
+            <Route
+              path="/add-news"
+              render={(props) => <AddNews {...props} user={this.state.user} />}
             />
             <Route path="/all-actors" component={AllActor} />
-            <Route path="/edit-actor/:id_actor" component={EditActor} />
+            <Route
+              path="/edit-actor/:id_actor"
+              render={(props) => (
+                <EditActor {...props} user={this.state.user} />
+              )}
+            />
             <Route path="/all-directors" component={AllDirector} />
             <Route
               path="/edit-director/:id_director"
-              component={EditDirector}
+              render={(props) => (
+                <EditDirector {...props} user={this.state.user} />
+              )}
+            />
+            <Route
+              path="/edit-news/:id_news"
+              render={(props) => (
+                <EditNews {...props} user={this.state.user} />
+              )}
             />
           </Switch>
         </Container>

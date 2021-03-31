@@ -372,6 +372,7 @@ class EditFilm extends Component {
             style={{ background: "yellowgreen" }}
             startIcon={<EditIcon />}
             onClick={this.editFilmHandler}
+            disabled={!this.props.user}
           >
             Sửa phim
           </Button>

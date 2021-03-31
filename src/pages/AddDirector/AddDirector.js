@@ -114,19 +114,12 @@ class AddDirector extends Component {
           startIcon={<AddIcon />}
           style={{ background: "yellowgreen", margin: "10px" }}
           onClick={this.submitHandler}
+          // disabled={!this.props.user}
         >
           Thêm Đạo Diễn
         </Button>
 
-        <Button
         
-          variant="contained"
-          color="secondary"
-          startIcon={<CloseIcon />}
-          style={{ margin: "10px" }}
-        >
-          Hủy Thêm
-        </Button>
       </div>
     );
   }

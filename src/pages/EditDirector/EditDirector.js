@@ -123,6 +123,7 @@ class EditDirector extends Component {
           startIcon={<AddIcon />}
           style={{ background: "yellowgreen", margin: "10px" }}
           onClick={this.editDirectorHandler}
+          disabled={!this.props.user}
         >
           Update thông tin đạo diễn
         </Button>

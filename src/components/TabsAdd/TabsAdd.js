@@ -52,12 +52,10 @@ export default class TabsAdd extends Component {
             <Button
               data-dismiss="modal"
               variant="contained"
-              color="danger"
               onClick={this.handleClose}
-              startIcon={<CloseIcon />}
-              style={{ margin: "10px" }}
+              style={{ margin: "10px", background: "red", color: "black" }}
             >
-              close
+              <h3>Close</h3>
             </Button>
           </Modal.Footer>
         </Modal>

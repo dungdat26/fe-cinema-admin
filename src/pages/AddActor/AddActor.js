@@ -121,18 +121,12 @@ class AddActors extends Component {
           startIcon={<AddIcon />}
           style={{ background: "yellowgreen", margin: "10px" }}
           onClick={this.submitHandler}
+          // disabled={!this.props.user}
         >
           Thêm Diễn Viên
         </Button>
 
-        <Button
-          variant="contained"
-          color="secondary"
-          startIcon={<CloseIcon />}
-          style={{ margin: "10px" }}
-        >
-          Hủy Thêm
-        </Button>
+        
       </Container>
     );
   }
